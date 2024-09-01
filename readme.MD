@@ -4,7 +4,7 @@ This Flask app is my first dive into Setiment Analysis. A user can submit a revi
 
 For this first version I am using VADER. 
 
-##Current Issues
+## Current Issues
 
 1. Neutral options don't go anywhere
 2. I don't think I'm generating the page efficiently
