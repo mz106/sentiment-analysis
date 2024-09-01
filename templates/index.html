@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+</head>
+
+<body>
+    <div>
+        <h1>Product Reviews</h1>
+
+        <form action="/add" method="post">
+            <div>
+                <label>Review</label>
+                <input type="text" name="review" placeholder="Enter a Review">
+                <button type="submit">Add a Review</button>
+            </div>
+        </form>
+
+        <hr>
+        <div>
+            Good List
+            {% for review in review_list %}
+            {% if review.score > 0 %}
+            <p>{{review.id}} : {{review.review_text}} : {{review.score}}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div>
+            Bad List
+            {% for review in review_list %}
+            {% if review.score < 0 %}
+            <p>{{review.id}} : {{review.review_text}} : {{review.score}}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
