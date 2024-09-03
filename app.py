@@ -19,12 +19,19 @@ class Review(db.Model):
 def check_score(review):
     return sia.polarity_scores(review).get('compound')
 
+def polarity_check(review_list):
+    good_reviews = [review for review in review_list if review.score > 0]
+    bad_reviews = [review for review in review_list if review.score < 0]
+    return good_reviews, bad_reviews
 
 @app.route("/")
 def home():
     review_list = Review.query.all()
-    print(review_list)
-    return render_template("index.html", review_list = review_list)
+    # print(review_list)
+    good_reviews, bad_reviews = polarity_check(review_list)
+    # print(good_reviews)
+    # print(bad_reviews)
+    return render_template("index.html", good_reviews = good_reviews, bad_reviews = bad_reviews)
 
 @app.route("/add", methods=["POST"])
 def add():

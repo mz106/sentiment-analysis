@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
+    <title>Review App</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='images/main_plot.png')}}">
 </head>
 
 <body>
-    <div>
+    <main>
         <h1>Product Reviews</h1>
+        <p> </p>
 
         <form action="/add" method="post">
             <div>
@@ -20,23 +22,25 @@
         </form>
 
         <hr>
+    <section>
+        <h1>Reviews</h1>
+        <div class="rows">
         <div>
-            Good List
-            {% for review in review_list %}
-            {% if review.score > 0 %}
+            <h2>Good List</h2>
+            {% for review in good_reviews %}
             <p>{{review.id}} : {{review.review_text}} : {{review.score}}</p>
-            {% endif %}
             {% endfor %}
         </div>
+
         <div>
-            Bad List
-            {% for review in review_list %}
-            {% if review.score < 0 %}
+            <h2>Bad List</h2>
+            {% for review in bad_reviews %}
             <p>{{review.id}} : {{review.review_text}} : {{review.score}}</p>
-            {% endif %}
             {% endfor %}
         </div>
     </div>
+    </section>
+    </main>
 </body>
 
 </html>
